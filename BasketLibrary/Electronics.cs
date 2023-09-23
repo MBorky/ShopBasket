@@ -10,7 +10,7 @@ namespace BasketLibrary
     {
         public string Category {  get; private set; }
         public string Color { get; private set; }
-        public Electronics(string name, double price, string category, string color) : base(name, price)
+        public Electronics(string name, decimal price, string category, string color) : base(name, price)
         {
             Category = category;
             Color = color;

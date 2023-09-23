@@ -10,9 +10,9 @@ namespace BasketLibrary
     public abstract class Product : IClone<Product>
     {
         public string Name { get;  private set; }
-        public double Price { get; private set; }
+        public decimal Price { get; private set; }
 
-        public Product (string name, double price)
+        public Product (string name, decimal price)
         {
             Name = name;
             Price = price;

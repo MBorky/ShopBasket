@@ -6,23 +6,24 @@ using System.Threading.Tasks;
 
 namespace BasketLibrary
 {
-    internal class ShopManager
+    public class ShopManager
     {
-        private List<Product> products;
+        public List<Product> Products { get; private set; }
         public ShopManager() 
         {
-            products = new List<Product>();
+            Products = new List<Product>();
+            
         }
 
         public void AddProduct(Product item) 
         {
-            products.Add(item);
+            Products.Add(item);
         }
       
         public string ProductList()
         {
             StringBuilder produtList = new StringBuilder();
-            foreach (var item in products)
+            foreach (var item in Products)
             {
                 produtList.AppendLine(item.ProductInfo() + "\n");
             }
@@ -31,7 +32,7 @@ namespace BasketLibrary
         public string ProductList<T>() where T : Product
         {
             StringBuilder productList = new StringBuilder();
-            foreach (var item in products.OfType<T>())
+            foreach (var item in Products.OfType<T>())
             {
                 productList.AppendLine(item.ProductInfo() + "\n");
             }

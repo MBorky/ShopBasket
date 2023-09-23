@@ -8,5 +8,12 @@ namespace BasketLibrary
 {
     internal class Order
     {
+        private DateTimeOffset orderTime;
+        private List<Product> orderList;
+        public Order()
+        {
+            orderTime = DateTimeOffset.Now;
+            orderList = ShoppingCart.BasketCopy();
+        }
     }
 }
