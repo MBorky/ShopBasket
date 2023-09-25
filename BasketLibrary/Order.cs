@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 
 namespace BasketLibrary
 {
-    internal class Order
+    public class Order
     {
         private DateTimeOffset orderTime;
         private List<Product> orderList;
-        public Order()
+        private readonly ShoppingCart instCart;
+        private decimal orderValue;
+        public Order(ShoppingCart instnceRef)
         {
+            instCart = instnceRef;
             orderTime = DateTimeOffset.Now;
-            orderList = ShoppingCart.BasketCopy();
+            orderList = instCart.BasketCopy();
+            orderValue = instCart.BasketValue();
+            // Removing basket, because order is completed, so basket should be empty
+            instCart.RemoveBasket(ConsoleHandlingContainer.DisplayMessage);
         }
     }
 }

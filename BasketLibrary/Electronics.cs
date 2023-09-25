@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BasketLibrary
 {
-    internal class Electronics : Product
+    public class Electronics : Product
     {
         public string Category {  get; private set; }
         public string Color { get; private set; }
@@ -17,7 +17,7 @@ namespace BasketLibrary
         }
         public override string ProductInfo() 
         {
-            return $"Produkt: {Name}, Kategoria: {Category}, Kolor: {Color}\nCena: {Price}";
+            return $"Product: {Name}, Category: {Category}, Color: {Color}\nPrice: {Price}";
         }
 
         public override Product Clone()

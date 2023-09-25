@@ -16,30 +16,40 @@ namespace BasketLibrary
         {
             basket = new List<Product>();
         }
-        public ShoppingCart(ShopManager instance)
+        public ShoppingCart(ShopManager instanceRef)
         {
             basket = new List<Product>();
-            ShopManager InstShopManager = instance;
+            ShopManager InstShopManager = instanceRef;
         }
-        public void AddToBasket(int index)
+        public void AddToBasket(int index, CallbackContainer.Callback callback)
         {
             basket.Add(InstShopManager.Products[index].Clone());
+            callback($"Product added:{InstShopManager.Products[index].ProductInfo()}");
+            
         }
-        public void RemoveFromBasket(int index)
+        public void RemoveFromBasket(int index, CallbackContainer.Callback callback)
         {
             basket.RemoveAt(index);
+            callback("Item removed");
         }
-        public void RemoveBasket()
+        public void RemoveBasket(CallbackContainer.Callback callback)
         {
             basket.Clear();
+            callback("Basket cleared");
         }
         public string ShowBasket()
         {
             StringBuilder basketList = new StringBuilder();
+            int index = 0;
+            if (basket.Count > 0) 
+            { 
+                return "basket is empty"; 
+            }
             foreach (var item in basket)
             {
-                basketList.AppendLine(item.ProductInfo() + "\n");
+                basketList.AppendLine($"{index++}. " + item.ProductInfo() + "\n");
             }
+            basketList.AppendLine($"Total purchase amount{BasketValue()}");
             return basketList.ToString();
         }
         public decimal BasketValue()
