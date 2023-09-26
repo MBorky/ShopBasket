@@ -20,6 +20,7 @@ namespace BasketLibrary
             orderValue = instCart.BasketValue();
             // Removing basket, because order is completed, so basket should be empty
             instCart.RemoveBasket(ConsoleHandlingContainer.DisplayMessage);
+            ConsoleHandlingContainer.DisplayMessage($"Order done. Price: {orderValue}");
         }
     }
 }

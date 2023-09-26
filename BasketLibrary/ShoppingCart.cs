@@ -19,12 +19,12 @@ namespace BasketLibrary
         public ShoppingCart(ShopManager instanceRef)
         {
             basket = new List<Product>();
-            ShopManager InstShopManager = instanceRef;
+            InstShopManager = instanceRef;
         }
         public void AddToBasket(int index, CallbackContainer.Callback callback)
         {
          
-            if (index -1 > 0 && index - 1 < InstShopManager.Products.Count)
+            if (index -1 >= 0 && index - 1 < InstShopManager.Products.Count)
             {
                 basket.Add(InstShopManager.Products[index - 1].Clone());
                 callback($"Product added:{InstShopManager.Products[index].ProductInfo()}");
@@ -34,7 +34,7 @@ namespace BasketLibrary
         }
         public void RemoveFromBasket(int index, CallbackContainer.Callback callback)
         {
-            if (index -1  > 0 && index - 1 < basket.Count)
+            if (index -1  >= 0 && index - 1 < basket.Count)
             {
                 basket.RemoveAt(index);
                 callback("Item removed");
