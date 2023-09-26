@@ -35,8 +35,8 @@ namespace BasketLibrary
         public string ProductList()
         {
             StringBuilder productList = new StringBuilder();
-            int index = 0;
-            if (Products.Count > 0) 
+            int index = 1;
+            if (Products.Count <= 0) 
             {
                 return "There is no products";
             }
@@ -49,20 +49,20 @@ namespace BasketLibrary
         public string ProductList<T>() where T : Product
         {
             StringBuilder productList = new StringBuilder();
-            int index = 0;
             /*foreach (var item in Products.OfType<T>())
             {
                 productList.AppendLine(item.ProductInfo() + "\n");
             }*/
-            if (Products.Count > 0)
+            if (Products.Count <= 0)
             {
                 return "There is no products";
             }
-            foreach (var item in Products) 
+            //foreach (var item in Products) 
+            for(int i = 0; i < Products.Count(); i++ )
             {
-                if (item is T)
+                if (Products[i] is T)
                 {
-                    productList.AppendLine($"Art.Number: {index++} " + item.ProductInfo() + "\n");
+                    productList.AppendLine($"Art.Number: {i + 1} " + Products[i].ProductInfo() + "\n");
                 }
             }
             return productList.ToString();

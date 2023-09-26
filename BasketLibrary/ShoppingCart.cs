@@ -23,14 +23,26 @@ namespace BasketLibrary
         }
         public void AddToBasket(int index, CallbackContainer.Callback callback)
         {
-            basket.Add(InstShopManager.Products[index].Clone());
-            callback($"Product added:{InstShopManager.Products[index].ProductInfo()}");
-            
+         
+            if (index -1 > 0 && index - 1 < InstShopManager.Products.Count)
+            {
+                basket.Add(InstShopManager.Products[index - 1].Clone());
+                callback($"Product added:{InstShopManager.Products[index].ProductInfo()}");
+            }
+            else {callback("Article does not exist"); }
+
         }
         public void RemoveFromBasket(int index, CallbackContainer.Callback callback)
         {
-            basket.RemoveAt(index);
-            callback("Item removed");
+            if (index -1  > 0 && index - 1 < basket.Count)
+            {
+                basket.RemoveAt(index);
+                callback("Item removed");
+            }
+            else
+            {
+                callback("Article does not exist in basket");
+            }
         }
         public void RemoveBasket(CallbackContainer.Callback callback)
         {
@@ -41,7 +53,7 @@ namespace BasketLibrary
         {
             StringBuilder basketList = new StringBuilder();
             int index = 0;
-            if (basket.Count > 0) 
+            if (basket.Count <= 0) 
             { 
                 return "basket is empty"; 
             }

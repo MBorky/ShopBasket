@@ -31,7 +31,8 @@ namespace BasketLibrary
         }
         public static string ReadStringToLower()
         {
-            return Console.ReadLine().ToLower();
+            string tempString = Console.ReadLine();
+            return tempString.ToLower();
         }
         public static string UseMainMenu()
         {
@@ -45,17 +46,19 @@ namespace BasketLibrary
                               "\nq. Quit");
             return ReadStringToLower();
         }
-        public static int UseBasket() 
+        public static int UseBasket()
         {
-            if (Int32.TryParse(Console.ReadLine(), out var basket))
+            do
             {
-                return basket;
-            }
-            else 
-            {
-                DisplayMessage("Wrong article number");
-                return 0; 
-            }
+                if (Int32.TryParse(Console.ReadLine(), out var basket) )
+                {
+                    return basket;
+                }
+                else
+                {
+                    DisplayMessage("please select number");
+                }
+            } while (true);
                     
         }
     }
